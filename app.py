@@ -11,7 +11,7 @@ target_amount = st.number_input("目標額を入力してください（単位�
 
 if invest_per_month and interest_rate:
     # 年間投資額
-    saving = invest_per_month * 12
+    saving = invest_per_month * 12 * 10000  # 円単位に変換
 
     # 年齢のリスト
     age = [i for i in range(ages[0], ages[1] + 1)]
@@ -23,13 +23,17 @@ if invest_per_month and interest_rate:
     savings = [(i + 1) * saving for i in range(len(age))]
 
     # 複利によるトータル資産の作成
-    total = [invest_per_month * (((1 + (interest_rate / 100 / 12)) ** (i * 12) - 1) / (interest_rate / 100 / 12)) for i in period]
+    total = [invest_per_month * 10000 * (((1 + (interest_rate / 100 / 12)) ** (i * 12) - 1) / (interest_rate / 100 / 12)) for i in period]
 
     df = pd.DataFrame({'age': age, 'period': period, 'savings': savings, 'total': total})
 
     # 利子分の算出
     df['interest'] = df['total'] - df['savings']
     
+    # デバッグ用出力
+    st.write(f"総投資額: {savings}")
+    st.write(f"トータル資産: {total}")
+
     # 目標額を達成する年齢を計算
     df['achieved'] = df['total'] >= target_amount * 10000  # 目標額を円単位に変換
     achieved_age = df[df['achieved']]['age'].min() if df['achieved'].any() else '目標未達成'
