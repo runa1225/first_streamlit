@@ -2,10 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import japanize-matplotlib
-
-# Matplotlibの日本語フォント設定
-plt.rcParams['font.family'] = 'IPAGothic'
+import japanize_matplotlib  # japanize_matplotlibをインポート
 
 # Streamlitのテーマを設定
 st.set_page_config(page_title="投資シミュレーションツール", layout="wide")
@@ -61,7 +58,6 @@ if invest_per_month and interest_rate:
 
     # Streamlitにグラフを表示
     st.pyplot(fig)
-
 
 
 # 機能の説明
