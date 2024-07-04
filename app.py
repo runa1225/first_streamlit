@@ -31,7 +31,7 @@ if invest_per_month and interest_rate:
     df['interest'] = df['total'] - df['savings']
     
     # 目標額を達成する年齢を計算
-    df['achieved'] = df['total'] >= target_amount * 10000
+    df['achieved'] = df['total'] >= target_amount * 10000  # 目標額を円単位に変換
     achieved_age = df[df['achieved']]['age'].min() if df['achieved'].any() else '目標未達成'
     
     st.write(f"目標額 {target_amount} 万円を達成する年齢: {achieved_age}")
