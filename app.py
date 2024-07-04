@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import japanize_matplotlib  # japanize_matplotlibをインポート
+import japanize_matplotlib  
 
 # Streamlitのテーマを設定
 st.set_page_config(page_title="投資シミュレーションツール", layout="wide")
