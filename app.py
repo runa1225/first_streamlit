@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import japanize-matplotlib
 
 # Matplotlibの日本語フォント設定
 plt.rcParams['font.family'] = 'IPAGothic'
