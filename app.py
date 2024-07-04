@@ -58,8 +58,8 @@ if invest_per_month and interest_rate:
     # Streamlitにグラフを表示
     st.pyplot(fig)
 
-# その他の情報
-st.sidebar.subheader("その他の情報")
+# 昨日の説明
+st.sidebar.subheader("ツールの説明")
 st.sidebar.markdown("""
 このツールは毎月の投資額、利回り、および投資期間を基に、将来の資産額をシミュレートします。
 目標額に達するまでの年齢を計算し、グラフで資産額の推移を視覚的に示します。
