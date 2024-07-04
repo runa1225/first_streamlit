@@ -7,6 +7,7 @@ st.title("投資シミュレーションツール")
 invest_per_month = st.number_input("毎月の投資額を入力してください（単位：万円）", value=5.0, format="%.1f")
 ages = st.slider('投資開始年齢と終了年齢を指定してください', 0, 100, (25, 60))
 interest_rate = st.number_input("想定利回りを入力してください。（単位：%）", value=5.0, format="%.1f")
+target_amount = st.number_input("目標額を入力してください（単位：万円）", value=5000.0, format="%.1f")
 
 if invest_per_month and interest_rate:
     # 年間投資額
@@ -28,6 +29,13 @@ if invest_per_month and interest_rate:
 
     # 利子分の算出
     df['interest'] = df['total'] - df['savings']
+    
+    # 目標額を達成する年齢を計算
+    df['achieved'] = df['total'] >= target_amount * 10000
+    achieved_age = df[df['achieved']]['age'].min() if df['achieved'].any() else '目標未達成'
+    
+    st.write(f"目標額 {target_amount} 万円を達成する年齢: {achieved_age}")
+
     st.write(df)
 
     # 棒グラフの描画
