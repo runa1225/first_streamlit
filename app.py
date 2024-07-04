@@ -25,18 +25,15 @@ if invest_per_month and interest_rate:
     # 複利によるトータル資産の作成
     total = [invest_per_month * 10000 * (((1 + (interest_rate / 100 / 12)) ** (i * 12) - 1) / (interest_rate / 100 / 12)) for i in period]
 
-    df = pd.DataFrame({'age': age, 'period': period, 'savings': savings, 'total': total})
+    # データフレームの作成
+    df = pd.DataFrame({'年齢': age, '期間': period, '総投資額': savings, 'トータル資産': total})
 
     # 利子分の算出
-    df['interest'] = df['total'] - df['savings']
+    df['利子'] = df['トータル資産'] - df['総投資額']
     
-    # デバッグ用出力
-    st.write(f"総投資額: {savings}")
-    st.write(f"トータル資産: {total}")
-
     # 目標額を達成する年齢を計算
-    df['achieved'] = df['total'] >= target_amount * 10000  # 目標額を円単位に変換
-    achieved_age = df[df['achieved']]['age'].min() if df['achieved'].any() else '目標未達成'
+    df['目標達成'] = df['トータル資産'] >= target_amount * 10000  # 目標額を円単位に変換
+    achieved_age = df[df['目標達成']]['年齢'].min() if df['目標達成'].any() else '目標未達成'
     
     st.write(f"目標額 {target_amount} 万円を達成する年齢: {achieved_age}")
 
@@ -44,7 +41,7 @@ if invest_per_month and interest_rate:
 
     # 棒グラフの描画
     fig, ax = plt.subplots()
-    df.plot(kind='bar', stacked=True, x='age', y=['savings', 'interest'], ax=ax)
+    df.plot(kind='bar', stacked=True, x='年齢', y=['総投資額', '利子'], ax=ax)
 
     ax.set_xlabel('年齢')
     ax.set_ylabel('資産額')
