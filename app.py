@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.font_manager._rebuild()
 import seaborn as sns
 import japanize_matplotlib  # japanize_matplotlibをインポート
 
