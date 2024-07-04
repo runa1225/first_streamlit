@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import japanize_matplotlib  
 
+plt.rcParams['font.family'] = 'IPAexGothic'
+
 # Streamlitのテーマを設定
 st.set_page_config(page_title="投資シミュレーションツール", layout="wide")
 
