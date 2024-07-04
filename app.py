@@ -1,7 +1,11 @@
+Copy code
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+# Matplotlibの日本語フォント設定
+plt.rcParams['font.family'] = 'IPAGothic'
 
 # Streamlitのテーマを設定
 st.set_page_config(page_title="投資シミュレーションツール", layout="wide")
@@ -58,7 +62,7 @@ if invest_per_month and interest_rate:
     # Streamlitにグラフを表示
     st.pyplot(fig)
 
-# 昨日の説明
+# 機能の説明
 st.sidebar.subheader("ツールの説明")
 st.sidebar.markdown("""
 このツールは毎月の投資額、利回り、および投資期間を基に、将来の資産額をシミュレートします。
