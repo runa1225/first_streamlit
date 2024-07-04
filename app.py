@@ -52,7 +52,7 @@ if invest_per_month and interest_rate:
 
     ax.set_xlabel('Age')
     ax.set_ylabel('Amount (Yen)')
-    ax.set_title(f'Asset Amount by Age (Monthly {invest_per_month}万円, Annual {interest_rate}%)')
+    ax.set_title(f'Asset Amount by Age (Monthly {invest_per_month} JPY, Annual {interest_rate}%)')
     ax.legend()
 
     # Streamlitにグラフを表示
