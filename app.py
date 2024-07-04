@@ -2,17 +2,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import japanize_matplotlib  
-
-plt.rcParams['font.family'] = 'Arial Unicode MS'
 
 # Streamlitのテーマを設定
 st.set_page_config(page_title="投資シミュレーションツール", layout="wide")
 
 st.title("投資シミュレーションツール")
-
-# フォント設定
-font_name = "IPAGothic"  # 使用したいフォント名を設定
 
 # サイドバーに入力フォームを配置
 st.sidebar.header("パラメータ設定")
@@ -53,12 +47,12 @@ if invest_per_month and interest_rate:
     # Seabornスタイルを使用したグラフの描画
     sns.set(style="whitegrid")
     fig, ax = plt.subplots(figsize=(12, 6))
-    sns.barplot(data=df, x='年齢', y='総投資額', color='skyblue', ax=ax, label='総投資額')
-    sns.barplot(data=df, x='年齢', y='利子', color='lightgreen', ax=ax, bottom=df['総投資額'], label='利子')
+    sns.barplot(data=df, x='年齢', y='総投資額', color='skyblue', ax=ax, label='Total Investment')
+    sns.barplot(data=df, x='年齢', y='利子', color='lightgreen', ax=ax, bottom=df['総投資額'], label='Interest')
 
-    ax.set_xlabel('年齢')
-    ax.set_ylabel('資産額（円）')
-    ax.set_title(f'年齢ごとの資産額（毎月{invest_per_month}万円、年利{interest_rate}%）')
+    ax.set_xlabel('Age')
+    ax.set_ylabel('Amount (Yen)')
+    ax.set_title(f'Asset Amount by Age (Monthly {invest_per_month}万円, Annual {interest_rate}%)')
     ax.legend()
 
     # Streamlitにグラフを表示
