@@ -3,8 +3,6 @@ import streamlit as st
 
 st.title("投資シュミレーションツール")
 
-st.title("投資シュミレーションツール")
-
 
 invest_per_month = st.number_input("毎月の投資額を入力してください（単位：万円）",value=5.0,format="%.1f")
 
