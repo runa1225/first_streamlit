@@ -9,6 +9,9 @@ st.set_page_config(page_title="投資シミュレーションツール", layout=
 
 st.title("投資シミュレーションツール")
 
+# フォント設定
+font_name = "IPAGothic"  # 使用したいフォント名を設定
+
 # サイドバーに入力フォームを配置
 st.sidebar.header("パラメータ設定")
 invest_per_month = st.sidebar.number_input("毎月の投資額を入力してください（単位：万円）", value=5.0, format="%.1f")
@@ -58,7 +61,6 @@ if invest_per_month and interest_rate:
 
     # Streamlitにグラフを表示
     st.pyplot(fig)
-
 
 # 機能の説明
 st.sidebar.subheader("ツールの説明")
