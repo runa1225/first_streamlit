@@ -1,4 +1,3 @@
-Copy code
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -61,6 +60,8 @@ if invest_per_month and interest_rate:
 
     # Streamlitにグラフを表示
     st.pyplot(fig)
+
+
 
 # 機能の説明
 st.sidebar.subheader("ツールの説明")
